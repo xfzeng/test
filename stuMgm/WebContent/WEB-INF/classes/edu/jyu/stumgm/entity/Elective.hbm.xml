@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="edu.jyu.stumgm.entity">
+	<class name="Elective" table="elective">
+		<id name="id" type="java.lang.String">
+			<generator class="native" />
+		</id>
+		<property name="name" type="java.lang.String" />
+		<property name="teacherName" type="java.lang.String" column="teacher_name"/>
+		<property name="credit" type="java.lang.String" />
+		<set name="students" table="student_elective">
+			<key column="elective_id"></key>
+			<many-to-many class="edu.jyu.stumgm.entity.Student" column="stu_number"></many-to-many>
+		</set>
+		
+	</class>
+</hibernate-mapping>
